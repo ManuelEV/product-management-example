@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public record PriceResponse(
         Long productId,
         Long brandId,
-        int rate,
+        int priority,
         LocalDateTime startDate,
         LocalDateTime endDate,
         float price

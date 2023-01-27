@@ -29,14 +29,10 @@ public class PricesServiceImpl implements PricesService {
                 .findAllByBrandIdAndProductIdAndDateRange(priceDTO.brandId(),
                         priceDTO.productId(), priceDTO.dateTime());
 
-        log.info("{}", prices);
-
         Price priceWithMaxPriority = prices
                 .stream()
                 .max(Comparator.comparing(Price::getPriority))
                 .orElseThrow(NotFoundException::new);
-
-        log.info("{}", priceWithMaxPriority);
 
         return mapper.toPriceResponse(priceWithMaxPriority);
     }
